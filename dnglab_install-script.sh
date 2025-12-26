@@ -5,7 +5,7 @@
 #random logo
 echo "
 ____________________________
-|	                   |
+|	                   	   |
 |      |      |        	   |
 |      |      | _ |    	   |
 |     _||_  _ | _||_       |
@@ -21,7 +21,7 @@ b="$HOME/dnglab"
 c="$HOME/dnglab/target/release"
 ###################################################################################
 
-# 1 asking hardware to use
+# Selection
 echo "$USER, select the action(1/2/3) 
 1. Install dnglab
 2. DNG-Convertion

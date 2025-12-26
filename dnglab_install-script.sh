@@ -5,13 +5,14 @@
 
 echo "
 ____________________________
-|			   			   |
+|			   |
 |      |      |            |
 |      |      | _ |        |
 |     _||_  _ | _||_       |
 |    |_|| ||_|||_||_|      |
 |           _|             |
 |__________________________|
+
 "
 
 ####################################################################################
@@ -52,8 +53,7 @@ case $selection in
         else
             echo "Starting installation process..."
 
-            git clone https://github.com/dnglab/dnglab.git \
-                || { echo "ERROR: git clone failed"; exit 1; }
+            git clone https://github.com/dnglab/dnglab.git  || { echo "ERROR: git clone failed"; exit 1; }
 
             cd "$b" || { echo "ERROR: cannot cd into $b"; exit 1; }
             cargo build --release || { echo "ERROR: cargo build failed"; exit 1; }
@@ -61,42 +61,46 @@ case $selection in
             echo "Do you want to add dnglab to system PATH? (Y/N):"
             read select
         
-            if [[ "$select" == "Y" ]]; then
+            if [[ "$select" == "Y" ]]
+	    then
                 echo "Y: selected, adding dnglab to PATH"
                 cd "$c" || { echo "ERROR: cannot cd into $c"; exit 1; }
-                DIR_TO_ADD="$(pwd)"
+                DIR="$(pwd)"
 
                 # add to PATH only if not already present
-                if ! grep -Fxq "export PATH=\"\$PATH:$DIR_TO_ADD\"" "$HOME/.bashrc"; then
-                    echo "export PATH=\"\$PATH:$DIR_TO_ADD\"" >> "$HOME/.bashrc"
+                if ! grep -Fxq "export PATH=\"\$PATH:$DIR\"" "$HOME/.bashrc"
+		then
+                    echo "export PATH=\"\$PATH:$DIR\"" >> "$HOME/.bashrc"
                 fi
 
                 echo "dnglab added to PATH permanently"
-                echo "Restart terminal or run: source ~/.bashrc"
+                echo "start a terminal or run: source ~/.bashrc"
                 exit 0
             else
-                echo "N: selected, actions finished"
+                echo "N:selected,actions finished"
                 exit 1
             fi
         fi
         ;;
 
-
-#2.0 selection2
+########################################################################################
+# 2.0 selection n2
     2|2.|DNG|dng)
         echo "Selected: DNG-Convertion"
         echo "Select (1/2):
 1. Insert folder name
 2. Insert file name
 : "
+    
         read selection2
+
         if [[ -z "$selection2" ]]
-		then	
-        	echo "ERROR: wrong insertion type, insert an integer"
-    	    exit 1
-				else
+	then
+            echo "ERROR:wrong insertion type,insert an integer"
+            exit 1
+        else
             echo "Insertion type: CORRECT"
-   	     fi
+        fi
                    
         case $selection2 in
 
@@ -107,11 +111,11 @@ case $selection in
                 read folder
 
                 # Case-insensitive search
-                find . -type d -iname "*${folder}*" > dnglab.txt
+                find . -type d -name "*${folder}*" > dnglab.txt
                 i=0
         
                 while read line
-			do  
+		do  
                     echo "[$i] $line"
                     ris[$i]="$line"
                     ((i++))
@@ -151,7 +155,7 @@ case $selection in
 			    then
                                 cp "$file" "$file.raw"
                             fi
-                            dnglab convert "$file" "$file.DNG"
+                            dnglab convert "$file" "${file}.DNG"
                         done
                         shopt -u nullglob
 
@@ -169,7 +173,7 @@ case $selection in
                 dnglab convert "$f2" "$f2.DNG" || { echo "ERROR: conversion not completed"; exit 1; }
 
                 echo "Conversion process completed"
-                find . -type f -iname "*.DNG"
+               #maybe in next verions find . -type f -iname "*.DNG"
                 exit 0
                 ;;
 
@@ -187,4 +191,6 @@ case $selection in
 
     *)
         echo "ERROR: not found"
-exit 1
+        exit 1
+        ;;
+esac

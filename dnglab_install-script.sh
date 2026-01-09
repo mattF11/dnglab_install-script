@@ -5,7 +5,7 @@
 
 echo "
 ____________________________
-|			   |
+|			               |
 |      |      |            |
 |      |      | _ |        |
 |     _||_  _ | _||_       |
@@ -149,31 +149,34 @@ case $selection in
 
                         echo "Do you want to copy RAW file into DNG(1=yes / 2=no)?"
                         read f1_1
-
-                        shopt -s nullglob #if file not found, empty string 
+                        shopt -s nullglob #if file not found, empty string
+						
+     	#repeat conversion process to convert all files in a folder
                         for file in "$selection"/*
 			do
                             if [[ "$f1_1" == "1" ]]
 			    then
-                                cp "$file" "$file.raw"
-                            fi
-                            dnglab convert "$file" "${file}.DNG"
+                                dnglab convert -c lossless --dng-preview true --dng-thumbnail true --embed-raw true "$file" "${file}.DNG"
+			    else
+				dnglab convert -c lossless --dng-preview --dng-thumbnail true "$file" "${file}.DNG"
+			    fi
                         done
                         shopt -u nullglob
 
-                        echo "Directory converted"
+                        echo "Directory converted."
                         exit 0
                     fi
-                fi
-		
+                fi	
+                ;;
+
                 ;;
         
             2|2.|file|name)
                 echo "Enter file name:"
                 read f2
-
                 echo "Converting..."
-                dnglab convert "$f2" "$f2.DNG" || { echo "ERROR: conversion not completed"; exit 1; }
+				#default: embed image preview and thumbnail data into the file,it can be displayed on all image viewers(if dng's support is available)
+                dnglab convert -c lossless --dng-preview true --dng-thumbnail true "$f2" "$f2.DNG" || { echo "ERROR: conversion not completed"; exit 1; }
 
                 echo "Conversion process completed"
                #maybe in next verions find . -type f -iname "*.DNG"

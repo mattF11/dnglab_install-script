@@ -1,0 +1,69 @@
+#+TITLE: Guida  
+#+AUTHOR: mattF11 
+#+DATE: 15-01-2026
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage[a4paper, margin=0.50in ]{geometry}
+#+LATEX_HEADER: \setcounter{tocdepth}{-1}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{fancyvrb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \lstset{breaklines=false}
+#+STARTUP: inlineimages
+
+*  Introduzione
+Lo script: *dnglab_install-script*, è stato idato per fornire un'utilizzo semplificato del tool cli dnglab.
+*dnglab*: /tool da riga di comando scritto in rust,converte i file da .raw proprietari a .dng/
+
+** Motivazione
+Non sempre è possibile ricordare il comando esatto o trovare la documentazione dove è stato scritto senza perdere troppo tempo,l'aiuto integrato non è semplice da utilizzare e richiede dimestichezza con il tool,avendo bisogno di inserire manualmente i nomi dei file o della directory che si desidera convertitre.
+Uno script che integra le opzioni che ritengo migliori e comode da utilizzare per la conversione lossless pare essere un bel passo in avanti,al momento della pubblicazione non esiste nessuna gui per dnglab.
+
+** Installazione
+Se dnglab non è disponibile per la distribuzione che utilizzi,è sempre possibile seguire l'installazione manuale.
+Il processo di installazione manuale è presente nella pagina github di dnglab ma è stato incorporato nello script,compresa l'aggiunta al path,bisogna solo seguire le opzioni illustrate a video ed i comandi saranno disponibili ogni volta che si desidera e all'interno di qualsiasi tty o terminale.
+Per installare lo script bisogna eseguire i seguenti comandi nel terminale:
+#+begin_src
+
+ 0. Aprire un terminale e verificare che git sia installato
+  which git
+
+ 0.1 se non da risultati,installare git dal package manager o app store della distribuzione
+  
+ 1. utilizza git clone command
+ git clone https://github.com/mattF11/dnglab_install-script
+
+ 2. entrare nella directory
+  cd dnglab_install-script
+
+ 3. rendere lo script eseguibile
+  chmod +x ./dnglab_install-script.sh
+
+#+end_src
+
+
+*** Dipendenze
+Trattandosi di uno script *bash*,la shell *bash* è una dipendenza,segue la lista delle dipendenze necessarie al corretto funzionamento:
+
+|-----+-----------------------------|
+| *n°*  | *Dependancies*                |
+|-----+-----------------------------|
+| [1] | Cargo                       |
+| [2] | *Bash* shell                  |
+| [3] | rust (programming language) |
+| [4] | git                         |
+|-----+-----------------------------|
+
+
+** Utilizzo
+Una volta nella directory dnglab_insyall-script,è possibile eseguire lo script con il comando:
+#+begin_src 
+
+  ./dnglab_install-script.sh
+
+#+end_src
+Nel caso sia considerato scomodo o ripetitivo,è possiible assegnare un'alias alla shell per eseguirlo da qualsiasi terminale di sistema e posizione nel file system.
+Il resto del procedimento consiste nel seguire le istruzioni,quindi inserire il nome o i numeri quando richiesto,quando un'elenco composto da directory è presentato a video,inserire semplicemente il numero corrispondente: es.  1 ,non inserire [1].
+
+

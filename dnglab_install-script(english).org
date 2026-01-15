@@ -60,7 +60,7 @@ This is a *bash* script,the *bash*  shell is needed,install all the packages lis
 |-----+-----------------------------|
 
 
-** Utilizzo
+** Usage
 Once inside the dnglab_install-script directory, run the script with the command:
 #+begin_src 
 

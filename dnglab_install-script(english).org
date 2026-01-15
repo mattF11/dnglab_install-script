@@ -1,0 +1,73 @@
+#+TITLE: Guide
+#+AUTHOR: mattF11 
+#+DATE: 15-01-2026
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage[a4paper, margin=0.50in ]{geometry}
+#+LATEX_HEADER: \setcounter{tocdepth}{-1}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{fancyvrb}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \lstset{breaklines=false}
+#+STARTUP: inlineimages
+
+*  Introduction
+The script: *dnglab_install-script* is currently developed to make dnglab cli tool installation process and usage easier.
+*dnglab*: cli /tool witten in rust,it provides image convertion from proprierary .raw formats to .dng/
+
+** Motivation
+It’s not always easy to remember the exact command or quickly find the documentation where it was written.
+The built-in help isn’t intuitive and requires familiarity with the commands,you still need to manually type the names of the files and directories you want to convert.
+A script that integrates the options i consider usefull and convenient for my personal needs,like lossless conversion.
+At the time of publication, no GUI exists for dnglab.
+
+** Installation
+If dnglab isn't available for your distribution,you have follow the manual installation or install this tool.
+If you want to follow the manual installation,you can still find it on dnglab’s official GitHub page,it has been incorporated into the script, including adding the tool to your system PATH.
+You only need to follow the on-screen instructions and the commands will be available anytime,in any TTY or terminal.
+To install the script, run the following commands:
+
+#+begin_src
+
+0. Open a terminal and check that git is installed:
+  which git
+
+0.1 If no result is returned,install it using with you package manager or app store
+
+1. Clone the repository:
+   git clone https://github.com/mattF11/dnglab_install-script
+
+2. Enter the directory:
+   cd dnglab_install-script
+
+3. Make the script executable:
+   chmod +x ./dnglab_install-script.sh
+
+#+end_src
+
+
+*** Dependancies
+This is a *bash* script,the *bash*  shell is needed,install all the packages listed in the following table:
+
+|-----+-----------------------------|
+| *n°*  | *Dependancies*                |
+|-----+-----------------------------|
+| [1] | Cargo                       |
+| [2] | *Bash* shell                  |
+| [3] | rust (programming language) |
+| [4] | git                         |
+|-----+-----------------------------|
+
+
+** Utilizzo
+Once inside the dnglab_install-script directory, run the script with the command:
+#+begin_src 
+
+  ./dnglab_install-script.sh
+
+#+end_src
+To complete the process you need to select the action you want to contiue and follow the instructions.
+When a list of directories is shown, type the corresponding number:
+*example*: 1  don't type [1]
+

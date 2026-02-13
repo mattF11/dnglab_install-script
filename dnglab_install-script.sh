@@ -168,8 +168,6 @@ case $selection in
                     fi
                 fi	
                 ;;
-
-                ;;
         
             2|2.|file|name)
                 echo "Enter file name:"

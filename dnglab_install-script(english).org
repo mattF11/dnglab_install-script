@@ -14,18 +14,18 @@
 
 *  Introduction
 The script: *dnglab_install-script* is currently developed to make dnglab cli tool installation process and usage easier.
-*dnglab*: cli /tool witten in rust,it provides image convertion from proprierary .raw formats to .dng/
+*dnglab*: cli /tool witten in rust,it provides image conversion from proprierary .raw formats to .dng/
 
 ** Motivation
 It’s not always easy to remember the exact command or quickly find the documentation where it was written.
 The built-in help isn’t intuitive and requires familiarity with the commands,you still need to manually type the names of the files and directories you want to convert.
 A script that integrates the options i consider usefull and convenient for my personal needs,like lossless conversion.
-At the time of publication, no GUI exists for dnglab.
+At the time of publication, dnglab lacks a GUI.
 
 ** Installation
-If dnglab isn't available for your distribution,you have follow the manual installation or install this tool.
-If you want to follow the manual installation,you can still find it on dnglab’s official GitHub page,it has been incorporated into the script, including adding the tool to your system PATH.
-You only need to follow the on-screen instructions and the commands will be available anytime,in any TTY or terminal.
+If dnglab isn't available for your distribution,you have to follow the manual installation or install this tool.
+If you want to follow the manual installation process,you can find it on dnglab’s official GitHub page,it has been implemented into the script, including adding the tool to your system PATH.
+Follow the on-screen instructions and the commands will be available in any TTY or terminal.
 To install the script, run the following commands:
 
 #+begin_src
@@ -67,7 +67,8 @@ Once inside the dnglab_install-script directory, run the script with the command
   ./dnglab_install-script.sh
 
 #+end_src
-To complete the process you need to select the action you want to contiue and follow the instructions.
+To complete the installation process, you need to select the desired action and then continue following the next request on screen.
 When a list of directories is shown, type the corresponding number:
-*example*: 1  don't type [1]
+*example*: 1
+*Don't type the square brackets with the number*,[1],the search process will fail. 
 

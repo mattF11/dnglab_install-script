@@ -10,3 +10,7 @@ The idea of the bash script came as i felt the need to semplify my workflow: eas
 
 ### Documentation
 Introductive documentation is provided both in italian and english(.org,pdf),only the essential parts are explained as it's really easy to use and you only need to follow the instructions.
+
+#### Features
+1. dnglab install
+2. dng conversion(single image or folder)

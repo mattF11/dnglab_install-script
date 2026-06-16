@@ -151,24 +151,34 @@ case $selection in
                         read f1_1
                         shopt -s nullglob #if file not found, empty string
 						
-     	#repeat conversion process to convert all files in a folder
-                        for file in "$selection"/*
+
+	#bash multiprocessing
+			maxnproc=$(nproc)
+			for file in "$selection"/*				    	    
 			do
+			    while (( $(jobs -r | wc -l) >= maxnproc ))  # the process number must be less or equal to the nproc number(cpu core count. + hyperthreading)
+			    do
+				sleep 0.06   #time needed to check
+			    done
+				  
                             if [[ "$f1_1" == "1" ]]
 			    then
-                                dnglab convert -c lossless --dng-preview true --dng-thumbnail true --embed-raw true "$file" "${file}.DNG"
+                                dnglab convert -c lossless --dng-preview true --dng-thumbnail true --embed-raw true "$file" "${file%.*}.DNG" &
 			    else
 				#with preview and thumbnails:	dnglab convert -c lossless --dng-preview true --dng-thumbnail true "$file" "${file}.DNG"
-				dnglab convert -c lossless --dng-thumbnail true "$file" "${file}.DNG"
+				dnglab convert -c lossless --dng-thumbnail true --dng-preview false --embed-raw false  "$file" "${file%.*}.DNG" &
 			    fi
+
                         done
+
+			wait #wait the process
                         shopt -u nullglob
 
-                        echo "Directory converted."
+                        echo "Process completed"
                         exit 0
                     fi
-                fi	
                 ;;
+
         
             2|2.|file|name)
                 echo "Enter file name:"

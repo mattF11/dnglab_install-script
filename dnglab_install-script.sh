@@ -158,7 +158,8 @@ case $selection in
 			    then
                                 dnglab convert -c lossless --dng-preview true --dng-thumbnail true --embed-raw true "$file" "${file}.DNG"
 			    else
-				dnglab convert -c lossless --dng-preview --dng-thumbnail true "$file" "${file}.DNG"
+				#with preview and thumbnails:	dnglab convert -c lossless --dng-preview true --dng-thumbnail true "$file" "${file}.DNG"
+				dnglab convert -c lossless --dng-thumbnail true "$file" "${file}.DNG"
 			    fi
                         done
                         shopt -u nullglob

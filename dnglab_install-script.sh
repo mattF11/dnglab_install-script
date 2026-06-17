@@ -1,19 +1,6 @@
 #!/bin/bash
 # AUTHOR: mattF11
-# VERSION: 1.0
 # DESCRIPTION: dnglab script to perform installation and basic functions
-
-echo "
-____________________________
-|			               |
-|      |      |            |
-|      |      | _ |        |
-|     _||_  _ | _||_       |
-|    |_|| ||_|||_||_|      |
-|           _|             |
-|__________________________|
-
-"
 
 ####################################################################################
 # DIRECTORY LIST
@@ -150,9 +137,21 @@ case $selection in
                         echo "Do you want to copy RAW file into DNG(1=yes / 2=no)?"
                         read f1_1
                         shopt -s nullglob #if file not found, empty string
-						
 
-	#bash multiprocessing
+			
+     	#repeat conversion process to convert all files in a folder
+                        # for file in "$selection"/*
+			# do
+                        #     if [[ "$f1_1" == "1" ]]
+			#     then
+                        #         dnglab convert -c lossless --dng-preview true --dng-thumbnail true --embed-raw true "$file" "${file%.*}.DNG" 
+			#     else
+			# 	#with preview and thumbnails:	dnglab convert -c lossless --dng-preview true --dng-thumbnail true "$file" "${file}.DNG"
+			#     coproc dnglab convert -c lossless --dng-thumbnail true --dng-preview false --embed-raw false  "$file" "${file%.*}.DNG"
+			#     fi
+                        # done
+
+			#versione modificata per processing parallelo
 			maxnproc=$(nproc)
 			for file in "$selection"/*				    	    
 			do
@@ -177,8 +176,10 @@ case $selection in
                         echo "Process completed"
                         exit 0
                     fi
+                fi	
                 ;;
 
+	    
         
             2|2.|file|name)
                 echo "Enter file name:"
@@ -195,9 +196,9 @@ case $selection in
             *)
                 echo "ERROR: not found"
                 exit 1
+		esac
                 ;;
-        esac
-        ;;
+  
 
     3|3.|Exit)
         echo "Exit"

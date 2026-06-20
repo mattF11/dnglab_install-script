@@ -13,4 +13,5 @@ Introductive documentation is provided both in italian and english(.org,pdf),onl
 
 #### Features
 1. dnglab install
-2. dng conversion(single image or folder)
+2. dng lossless conversion(single image or folder)
+3. multiprocessing with nproc(no gnu parallel)

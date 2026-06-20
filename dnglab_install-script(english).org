@@ -72,3 +72,5 @@ When a list of directories is shown, type the corresponding number:
 *example*: 1
 *Don't type the square brackets with the number*,[1],the search process will fail. 
 
+Basic Multiprocessing is enabled,it will use all the threads available on the system to convert the images,the time required for it won't be an issue even on laptops,
+tested on mobile 8c/16th i7,370 .arw images coverted in 15s.

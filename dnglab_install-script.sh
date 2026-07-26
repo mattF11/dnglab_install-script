@@ -8,6 +8,8 @@ a="$HOME"
 b="$HOME/dnglab"
 c="$HOME/dnglab/target/release"
 ###################################################################################
+# set -euo pipefail = -e stop script if command fails, -u uninitialized variabile error, -o pipefail if pipeline fails,script fails
+set -euo pipefail
 
 # Selection
 echo "$USER, select the action (1/2/3)
@@ -19,7 +21,8 @@ echo "$USER, select the action (1/2/3)
 read selection
 
 # 1.1 check if string is inserted
-if [[ -z "$selection" ]]; then
+if [[ -z "$selection" ]]
+then
     echo "ERROR: wrong insertion type, insert an integer"
 else
     echo "Insertion type: CORRECT"
@@ -34,7 +37,8 @@ case $selection in
 
         cd "$a" || { echo "ERROR: cannot cd into $a"; exit 1; }
 
-        if [[ -d "$b" ]]; then
+        if [[ -d "$b" ]]
+		then
             echo "Abort installation... dnglab already installed"
             exit 0
         else

@@ -9,7 +9,7 @@ b="$HOME/dnglab"
 c="$HOME/dnglab/target/release"
 ###################################################################################
 # set -euo pipefail = -e stop script if command fails, -u uninitialized variabile error, -o pipefail if pipeline fails,script fails
-set -euo pipefail
+#set -euo pipefail
 
 # Selection
 echo "$USER, select the action (1/2/3)

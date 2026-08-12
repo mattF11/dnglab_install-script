@@ -9,7 +9,7 @@ c="$HOME/dnglab/target/release"
 #####################################################################################
 # set -euo pipefail = -e stop script if command fails, -u uninitialized variabile error, -o pipefail if pipeline fails,script fails
 # fix the dependancies skipped,it works well but now is placed inside the directory check,which isn't the right thing for it
-#set -euo pipefail
+set -euo pipefail
 function menu_function
 {
 # Selection menu
@@ -31,7 +31,6 @@ fi
 }
 
 # 1.2 installing dnglab from the official github page
-set -euo pipefail
 function git_function
 {
     if [[ -d "$b" ]]
@@ -332,7 +331,7 @@ case $selection in
                 read f2
                 echo "Converting..."
 		#default: embed image preview and thumbnail data into the file,it can be displayed on all image viewers(if dng's support is available)
-                dnglab convert -c lossless --dng-preview true --dng-thumbnail true "$f2" "$f2.DNG" || { echo "ERROR: conversion not completed"; exit 1; }
+                dnglab convert -c lossless --dng-preview true --dng-thumbnail true "$f2" "${f2%.*}.DNG" || { echo "ERROR: conversion not completed"; exit 1; }
 
                 echo "Conversion process completed"
 		#maybe in next verions find . -type f -iname "*.DNG"
